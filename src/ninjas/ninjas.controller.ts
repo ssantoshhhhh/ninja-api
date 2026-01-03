@@ -2,8 +2,11 @@ import { Body, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, 
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
 import { NinjasService } from './ninjas.service';
+import { UseGuards } from '@nestjs/common';
+import { BeltGuard } from '../belt/belt.guard';
 
 @Controller('ninjas')
+@UseGuards(BeltGuard)
 export class NinjasController {
   constructor(private readonly ninjasService: NinjasService) { }
 
